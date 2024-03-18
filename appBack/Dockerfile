@@ -5,7 +5,7 @@ RUN mvn dependency:resolve
 COPY . /app
 RUN mvn package -DskipTests
 
-FROM openjdk:17-jdk-alpine
+FROM openjdk:23-ea-13
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8081
 CMD ["java", "-jar", "app.jar"]
